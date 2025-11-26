@@ -1,6 +1,4 @@
-/* =========================================
-   1. SETTINGS (Variables Globales)
-   ========================================= */
+/* Globales */
 :root {
     /* Colores */
     --color-bg-body: #0f1a2b;      /* Fondo Base (Dark Blue) */
@@ -24,9 +22,7 @@
     --z-modal: 9999;
 }
 
-/* =========================================
-   2. BASE (Reset & Scroll)
-   ========================================= */
+/* Base */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 html { scroll-behavior: smooth; }
@@ -53,14 +49,12 @@ img { display: block; max-width: 100%; }
     padding: 0 20px;
 }
 
-.section-header { text-align: center; margin-bottom: 60px; }
-.section-header h2 { font-size: 2.5rem; font-weight: 700; margin-bottom: 15px; }
-.section-header p { color: var(--color-muted); font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+.section-header {margin-bottom: 60px; }
+.section-header h2 { font-size: 2.5rem; font-weight: 600; margin-bottom: 15px; }
+.section-header p { color: var(--color-muted); font-size: 1.1rem; margin: 0 auto; }
 .text-accent { color: var(--color-accent); }
 
-/* =========================================
-   3. LAYOUT (Header & Navigation)
-   ========================================= */
+/* Layout */
 .header {
     position: fixed;
     top: 0; left: 0; width: 100%;
@@ -70,9 +64,8 @@ img { display: block; max-width: 100%; }
     transition: background-color 0.4s ease, box-shadow 0.4s ease;
 }
 
-/* Estado Scrolled & Menú Abierto (Glassmorphism Unificado) */
 .header.scrolled, .header.menu-open {
-    background-color: rgba(10, 16, 29, 0.322); /* Opacidad consistente */
+    background-color: rgba(10, 16, 29, 0.322);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -117,11 +110,9 @@ img { display: block; max-width: 100%; }
 .menu-toggle { display: none; flex-direction: column; gap: 5px; z-index: 1100; }
 .bar { width: 24px; height: 2px; background-color: #fff; border-radius: 2px; }
 
-/* =========================================
-   4. COMPONENTS (Secciones)
-   ========================================= */
+/* Componentes */
 
-/* --- A. Hero Section --- */
+/* Hero */
 .hero {
     display: flex; align-items: center; justify-content: center;
     min-height: 100vh; text-align: center;
@@ -181,10 +172,14 @@ img { display: block; max-width: 100%; }
 .btn-link { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; color: white; transition: color 0.3s; }
 .btn-link:hover { color: var(--color-accent); }
 
-/* --- B. Logo Slider --- */
+/* Logo slider */
+.slider-container {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0; 
+}
 .logo-slider {
     max-width: var(--max-width);
-    justify-self: center;
     background-color: var(--color-bg-body); padding: 40px 0; overflow: hidden;
     position: relative; border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     display: flex; flex-direction: column; align-items: center; gap: 20px;
@@ -201,7 +196,7 @@ img { display: block; max-width: 100%; }
 .logo-slider::before { left: 0; background: linear-gradient(to right, var(--color-bg-body), transparent); }
 .logo-slider::after { right: 0; background: linear-gradient(to left, var(--color-bg-body), transparent); }
 
-/* --- C. Servicios (Grid) --- */
+/* Tarjetas servicios */
 .services-section { padding: 100px 20px; background-color: var(--color-bg-body); }
 .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 50px; margin-bottom: 50px; }
 .service-card {
@@ -215,18 +210,19 @@ img { display: block; max-width: 100%; }
     background-color: rgba(59, 130, 246, 0.1); width: 50px; height: 50px;
     display: flex; align-items: center; justify-content: center; border-radius: 12px;
 }
-.service-card h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 10px; color: #fff; }
+.service-card h3 { font-size: 1.25rem; font-weight: 500; margin-bottom: 10px; color: #fff; }
 .service-card p { font-size: 0.95rem; color: var(--color-muted); }
 
-/* --- D. Proyectos (Clean Grid) --- */
+/* Proyectos */
 .projects-section { padding: 100px 20px; }
-.clean-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin: 0 auto; }
+.projects-text { text-align: center;}
+.clean-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 50px; margin: 0 auto; }
 .clean-card {
     background-color: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 16px; padding: 30px; display: flex; flex-direction: column;
     justify-content: space-between; min-height: 260px; cursor: pointer; transition: all 0.3s ease;
 }
-.clean-card:hover { border-color: var(--color-accent); transform: translateY(-5px); background-color: #131b2b; box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5); }
+.clean-card:hover { border-color: var(--color-accent); transform: translateY(-5px); background-color: rgba(255, 255, 255, 0.05); box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5); }
 .category-tag { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--color-accent); font-weight: 700; opacity: 0.8; }
 .card-desc { font-size: 0.95rem; color: #9ca3af; margin-top: 10px; }
 .card-bottom { display: flex; justify-content: space-between; align-items: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.05); }
@@ -234,7 +230,126 @@ img { display: block; max-width: 100%; }
 .arrow-icon { width: 40px; height: 40px; border-radius: 50%; background-color: rgba(255, 255, 255, 0.05); display: flex; align-items: center; justify-content: center; color: white; transition: all 0.3s ease; }
 .clean-card:hover .arrow-icon { background-color: var(--color-accent); transform: rotate(-45deg); }
 
-/* --- E. Modal --- */
+/* Proceso y FAQ */
+.process-section {
+    padding: 100px 20px;
+    /* background-color: var(--color-bg-body); */
+}
+
+.process-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 50px;
+    margin-bottom: 100px;
+}
+
+.process-card {
+    /* background-color: #0F1623; Fondo oscuro elegante */
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 40px 30px;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.process-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--color-accent);
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.process-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; width: 100%; height: 4px;
+    background: var(--color-accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+.process-card:hover::before {
+    transform: scaleX(1);
+}
+
+.step-number {
+    font-size: 2.5rem;
+    color: var(--color-accent);
+    opacity: 0.8;
+    line-height: 1;
+    margin-bottom: 20px;
+    /* font-style: italic; */
+}
+
+.process-card h3 {
+    font-size: 1.4rem;
+    color: white;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.process-card p {
+    font-size: 0.95rem;
+    color: var(--color-muted);
+    line-height: 1.6;
+}
+
+/* FAQ ac */
+.faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+.faq-text { text-align: center;}
+
+.faq-item {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 10px;
+}
+
+.faq-question {
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    padding: 20px 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: color 0.3s ease;
+}
+
+.faq-question:hover {
+    color: var(--color-accent);
+}
+
+.faq-question i {
+    font-size: 0.9rem;
+    transition: transform 0.3s ease;
+    color: var(--color-accent);
+}
+
+.faq-question.active i {
+    transform: rotate(180deg);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+
+.faq-answer p {
+    padding-bottom: 20px;
+    color: var(--color-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* Modal */
 .modal {
     display: none; position: fixed; z-index: var(--z-modal); left: 0; top: 0;
     width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.85); backdrop-filter: blur(8px);
@@ -262,7 +377,7 @@ img { display: block; max-width: 100%; }
     .modal-text { padding: 40px; display: flex; flex-direction: column; justify-content: center; }
 }
 
-/* --- F. WhatsApp Widget --- */
+/* WSP */
 .wa-widget {
     position: fixed; bottom: 30px; right: 30px; z-index: var(--z-widget);
     display: flex; flex-direction: column; align-items: flex-end; gap: 15px;
@@ -298,7 +413,7 @@ img { display: block; max-width: 100%; }
 .wa-close:hover { color: white; }
 .wa-body p { font-size: 0.9rem; color: #d1d5db; margin: 0; line-height: 1.4; }
 
-/* --- G. Footer --- */
+/* Footer */
 .footer { 
     background-color: #0d1725; 
     border-top: 1px solid rgba(255, 255, 255, 0.05); 
@@ -366,7 +481,7 @@ img { display: block; max-width: 100%; }
 
 .footer-links a:hover { 
     color: var(--color-accent); 
-    transform: translateX(5px); /* Movimiento suave a la derecha */
+    transform: translateX(5px);
 }
 
 /* Contacto */
@@ -391,9 +506,7 @@ img { display: block; max-width: 100%; }
     opacity: 0.6; 
 }
 
-/* =========================================
-   5. RESPONSIVE (Mobile Adjustments)
-   ========================================= */
+/* Responsive */
 @media (max-width: 768px) {
     .menu-toggle { display: flex; }
 

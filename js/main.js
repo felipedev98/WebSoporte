@@ -1,25 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    /* =========================================
-       1. HEADER & SCROLL
-       ========================================= */
+// Header 
     const header = document.querySelector('.header');
     const menuToggle = document.querySelector('.menu-toggle');
     const navContainer = document.querySelector('.nav-container');
     const navLinks = document.querySelectorAll('.nav-link');
-
-    // Scroll Effect (Glassmorphism)
     window.addEventListener('scroll', () => {
         header.classList.toggle('scrolled', window.scrollY > 50);
     });
-
-    // Menu Toggle (Mobile)
     menuToggle.addEventListener('click', () => {
         navContainer.classList.toggle('active');
         header.classList.toggle('menu-open');
     });
-
-    // Close menu when link clicked
     navLinks.forEach(link => {
         link.addEventListener('click', () => {
             navContainer.classList.remove('active');
@@ -27,9 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    /* =========================================
-       2. EFECTO TYPEWRITER (HERO)
-       ========================================= */
+// Efecto TypeWritter
     const typeWriterElement = document.getElementById('typewriter');
     const words = ["Especializado", "Garantizado", "Rápido", "Personalizado"];
     let wordIndex = 0;
@@ -38,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let typeSpeed = 100;
 
     function type() {
-        if (!typeWriterElement) return; // Safety check
+        if (!typeWriterElement) return;
 
         const currentWord = words[wordIndex];
 
@@ -65,9 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     type();
 
-    /* =========================================
-       3. MODAL DE PROYECTOS
-       ========================================= */
+// Modal proyectos
     const modal = document.getElementById('project-modal');
     const closeBtn = document.querySelector('.close-modal');
     const projectTriggers = document.querySelectorAll('.project-trigger'); 
@@ -79,15 +67,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     projectTriggers.forEach(card => {
         card.addEventListener('click', () => {
-            // Rellenar datos
             modalTitle.textContent = card.getAttribute('data-title');
             modalCategory.textContent = card.getAttribute('data-category');
             modalImg.src = card.getAttribute('data-img');
             modalDesc.textContent = card.getAttribute('data-desc');
             
-            // Mostrar
             modal.classList.add('show');
-            document.body.style.overflow = 'hidden'; // Bloquear scroll fondo
+            document.body.style.overflow = 'hidden';
         });
     });
 
@@ -102,17 +88,35 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.target == modal) closeModal();
     });
 
-    /* =========================================
-       4. WHATSAPP WIDGET
-       ========================================= */
+// FAQ
+    const faqQuestions = document.querySelectorAll('.faq-question');
+
+    faqQuestions.forEach(question => {
+        question.addEventListener('click', () => {
+            question.classList.toggle('active');
+            const answer = question.nextElementSibling;
+            if (question.classList.contains('active')) {
+                answer.style.maxHeight = answer.scrollHeight + "px";
+            } else {
+                answer.style.maxHeight = 0;
+            }
+            faqQuestions.forEach(otherQuestion => {
+                if (otherQuestion !== question && otherQuestion.classList.contains('active')) {
+                    otherQuestion.classList.remove('active');
+                    otherQuestion.nextElementSibling.style.maxHeight = 0;
+                }
+            });
+            
+        });
+    });
+
+// WSP
     const waWidget = document.getElementById('whatsapp-widget');
     const waPopup = document.querySelector('.wa-popup');
     const waClose = document.querySelector('.wa-close');
 
-    // Aparecer después de 2.5s
     setTimeout(() => {
         if(waWidget) waWidget.classList.add('show');
-        // Popup 1s después del botón
         setTimeout(() => { if(waPopup) waPopup.classList.add('show'); }, 1000);
     }, 2500);
 
